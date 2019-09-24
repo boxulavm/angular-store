@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../cart.service'
 import { FormBuilder } from '@angular/forms'
+import M from 'materialize-css/dist/js/materialize.min.js';
 
 @Component({
   selector: 'app-cart',

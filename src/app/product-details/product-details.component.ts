@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { storeProducts } from '../data.js';
-
+import M from 'materialize-css/dist/js/materialize.min.js';
 import { CartService } from '../cart.service';
 
 @Component({
