@@ -1,0 +1,18 @@
+<h3 class="center-align">Product Details</h3>
+<br>
+<div *ngIf='product'>
+    <div class="row">
+        <div class="col s12 m12 l6">
+            <h4>{{ product.title }} <span> by: {{ product.company }}</span></h4>
+            <h5>{{ product.price | currency }} <span class="orange-text darken-3" *ngIf='product.onSale'>On Sale!</span></h5>
+            <p>{{ product.info }}</p>
+        </div>
+        <div class="col s12 m12 l6">
+            <img class="phone-img" src={{product.img}}>
+        </div>
+        <br>
+        <br>
+        <a (click)='addToCart(product)' class="btn buy-btn waves-effect waves-light purple darken-2 z-depth-2">Buy</a>
+        <a class="btn waves-effect waves-light blue darken-3 z-depth-2" [routerLink]="['']">Back</a>
+    </div>
+</div>

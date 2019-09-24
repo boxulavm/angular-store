@@ -1,0 +1,44 @@
+body {
+    background: #212121;
+    color: #ddd;
+}
+
+nav {
+    background: linear-gradient(to right, #6f19d2, #11198a 90%);
+}
+
+.card-title {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.card-image img{
+    transform: scale(0.6);
+    transition: 0.5s ease-in-out;
+}
+
+.card:hover .card-image img{
+    transform: scale(0.8);
+    transition: 0.5s ease-in-out;
+}
+
+.card-action a{
+    margin: 10px;
+}
+
+.toast {
+    background: #6f19d2 !important;
+}
+
+.buy-btn {
+    margin-right: 10px;
+}
+
+input {
+    color: white;
+}
+
+@media(max-width: 500px){
+    .phone-img{
+        width: 260px;
+    }
+}

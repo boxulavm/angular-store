@@ -1,0 +1,5 @@
+<h3 class="center-align">Shipping prices</h3>
+<br>
+<ul class="collection">
+    <li *ngFor='let shipping of shippingCosts | async' class=" grey darken-3 collection-item"><div>{{ shipping.type }}<span href="#!" class="secondary-content  orange-text">{{ shipping.price | currency }}</span></div></li>
+</ul>

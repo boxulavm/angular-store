@@ -1,0 +1,28 @@
+<h3 class="center-align">Cart</h3>
+<br>
+
+
+<ul class="collection">
+    <li class="collection-item avatar grey darken-3" *ngFor='let item of items'>
+        <span class="title">{{ item.title }}</span>
+        <img src={{item.img}} class="circle" >
+        <span class="secondary-content orange-text">{{ item.price | currency }}</span>
+    </li>
+</ul>
+<br>
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+
+    <div>
+        <label for="name">Name</label>
+        <input id="name" type="text" formControlName='name'>
+    </div>
+
+    <div>
+        <label for="address">Address</label>
+        <input id="address" type="text" formControlName='address'>
+    </div>
+
+    <button class="btn buy-btn waves-effect waves-light purple darken-2 z-depth-2" type="submit">Purchase</button>
+</form>
+<br>
+<a class="btn buy-btn waves-effect waves-light blue darken-2 z-depth-2" routerLink="/shipping">Shipping Prices</a>
