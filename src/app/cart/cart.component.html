@@ -2,6 +2,9 @@
 <br>
 
 
+
+<h4 class="red-text" *ngIf='items.length === 0'> No Items in Cart!</h4>
+
 <ul class="collection">
     <li class="collection-item avatar grey darken-3" *ngFor='let item of items'>
         <span class="title">{{ item.title }}</span>
@@ -9,20 +12,25 @@
         <span class="secondary-content orange-text">{{ item.price | currency }}</span>
     </li>
 </ul>
+<h6 *ngIf='items.length !== 0' class="right-align">Total: <span class="orange-text">{{ totalPrice | currency }}</span> </h6>
 <br>
-<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+
+<form *ngIf='items.length !== 0' #checkoutForm="ngForm" class="grey darken-3" (ngSubmit)="onSubmit()" >
 
     <div>
-        <label for="name">Name</label>
-        <input id="name" type="text" formControlName='name'>
+        <label for="name"><h5>Name</h5></label>
+        <input #name="ngModel"  id="name" type="text" name="name" ngModel  required>
+        <span *ngIf="!name.valid && name.touched" class="helper-text red-text">Please Enter Name !</span>
+        
     </div>
 
     <div>
-        <label for="address">Address</label>
-        <input id="address" type="text" formControlName='address'>
+        <label for="address"><h5>Adrress</h5></label>
+        <input #address='ngModel' id="address" type="text" name="address" ngModel  required>
+        <span *ngIf="!address.valid && address.touched" class="helper-text red-text">Please Enter Adress !</span>
     </div>
 
-    <button class="btn buy-btn waves-effect waves-light purple darken-2 z-depth-2" type="submit">Purchase</button>
+    <button [disabled]='!checkoutForm.valid' class="btn purchase-btn waves-effect waves-light purple darken-2 z-depth-2" type='submit'>Purchase</button>
 </form>
 <br>
 <a class="btn buy-btn waves-effect waves-light blue darken-2 z-depth-2" routerLink="/shipping">Shipping Prices</a>

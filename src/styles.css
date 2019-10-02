@@ -1,7 +1,21 @@
 body {
     background: #212121;
     color: #ddd;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
+
+
+ main {
+    flex: 1 0 auto;
+  }
+
+.brand-logo { 
+    padding-left: 5px !important;
+}
+
 
 nav {
     background: linear-gradient(to right, #6f19d2, #11198a 90%);
@@ -33,9 +47,25 @@ nav {
     margin-right: 10px;
 }
 
+.purchase-btn {
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
 input {
     color: white;
 }
+
+form {
+    padding: 1rem;
+}
+
+footer {
+    padding-bottom: 7px;
+    padding-top: 6px;
+    background-color: #0f0f0f !important;
+}
+
 
 @media(max-width: 500px){
     .phone-img{

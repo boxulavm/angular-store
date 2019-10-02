@@ -8,13 +8,17 @@ import { CartService } from '../cart.service'
 })
 export class ShippingComponent implements OnInit {
   shippingCosts;
+  loading = true;
 
   constructor(
     private cartService: CartService
   ) { }
 
   ngOnInit() {
-    this.shippingCosts = this.cartService.getShippingPrices();
+    setTimeout(() => {
+      this.shippingCosts = this.cartService.getShippingPrices();
+      this.loading = false;
+    }, 700);
   }
 
 }

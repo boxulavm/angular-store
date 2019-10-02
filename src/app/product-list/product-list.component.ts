@@ -15,9 +15,6 @@ export class ProductListComponent implements OnInit {
   ngOnInit() {
   }
 
-  share(){
-    M.toast({html: 'Product has been shared!'});
-  }
 
   onNotify(){
     M.toast({html: 'You will be notified when product goes on sale!'});

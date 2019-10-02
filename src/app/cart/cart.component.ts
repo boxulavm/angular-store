@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CartService } from '../cart.service'
-import { FormBuilder } from '@angular/forms'
+import { NgForm } from '@angular/forms'
 import M from 'materialize-css/dist/js/materialize.min.js';
 
 @Component({
@@ -10,28 +10,27 @@ import M from 'materialize-css/dist/js/materialize.min.js';
 })
 export class CartComponent implements OnInit {
   items;
-  checkoutForm;
+  totalPrice;
+
+  @ViewChild('checkoutForm', { static: false } ) form2: NgForm;
 
   constructor(
     private cartService: CartService,
-    private formBuilder: FormBuilder,
   ) { }
 
   ngOnInit() {
     this.items = this.cartService.getItems();
-
-    this.checkoutForm = this.formBuilder.group({
-      name: '',
-      address: ''
-    })
+    this.totalPrice = this.items
+      .map(item => Number(item.price))
+      .reduce((total, price) => total + price, 0) ;
   }
 
-  onSubmit(customerData){
+  onSubmit(){
     // Process ckeckout data here
-    M.toast({html: `Your order has been submitted, ${customerData.name} - ${customerData.address}`});
+    M.toast({html: `Your order has been submitted, ${this.form2.value.name} - ${this.form2.value.address}`});
   
     this.items = this.cartService.clearCart();
-    this.checkoutForm.reset();
+    this.form2.reset();
   }
 
 }
